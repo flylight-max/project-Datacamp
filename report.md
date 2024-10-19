@@ -90,13 +90,33 @@ mid-size/large family car  |  0.005384               |  0.029858
 sport                      |  0.000000               |  0.020558
 large SUV/profesional      |  0.000000               |  0.000000  
 
-While the customers who preferred to buy a petrol car largely chose a city car (84%), the customers who decided to invest in a hybrid car turned their choice towards a compact sedan car (43.7%). Importantly, only 6% of our customers who bought a petrol car chose a Sedan kind of car and 4% chose a compact SUV while 28.5% of the customers who bought a Hybrid chose a compact SUV. It is important to note that hybrids have the advantage to combine the classic petrol fuel and electrivity. Hence, they can achieve long distances whith much less fuel consumptions. Furthermore, some of these cars go with an auto-charge (and not a plug-in system) of the electric motor. This is a huge advantage over both the e-cars and the petrol cars. therefore this characeristic can easily convince a customer ready to invest a bit more in a car.  
+While the customers who preferred to buy a petrol car largely chose a city car (84%), the customers who decided to invest in a hybrid car turned their choice towards a compact sedan car (43.7%). Importantly, only 6% of our customers who bought a petrol car chose a Sedan kind of car and 4% chose a compact SUV while 28.5% of the customers who bought a Hybrid chose a compact SUV. It is important to note that hybrids have the advantage to combine the classic petrol fuel and electrivity. Hence, they can achieve long distances with much less fuel consumptions. Furthermore, some of these cars go with an auto-charge (and not a plug-in system) of the electric motor. This is a huge advantage over both the e-cars and the petrol cars. therefore this characeristic can easily convince a customer ready to invest a bit more in a car.  
 
 # **Focus on the comparison between Petrol and Hybrids**  
-## **Do the hybrids SUVs and sedans have a higher mog than the petrol cars of the same kind?**  
+## **Do the hybrids SUVs and sedans have a higher mpg than the petrol cars of the same kind?**  
 
 ![Comparison of mpg distribution of both Sedan and SUV cars between hybrids and petrol cars](histogram_mpg_comparison.png "mpg distribution SUV and sedan")  
 
 We can see here what would confirm my first thought (see above): the hybird customers who bought a sedan or suv car chose a higher mpg car. 
 
+fuelType   |    Count     |   mean     |    std     |   min  | 25%  | 50%  | 75%  |  max
+--------   |   --------   |   -------  |  -----     | ----   | ---- | ---- | ---- | ----
+Hybrid     |  1475.0      | 73.919932  | 20.054551  | 49.6   | 68.8 | 74.3 | 78.5 | 235.0
+Petrol     |  437.0       | 47.454920  | 8.229537   |  6.0   | 41.5 | 47.1 | 52.3 |  78.5  
+
+After applying a Mann-Whitney U test on the two fuel types, I can conlcude that the mpg of the compact SUV and sedan hybrid cars bought is significantly higher than the petrol cars of the same kinds.  
+
+## **Why would our customers largely prefer to buy a small city petrol car?**
+This question is perhaps the most relevant. Indeed, concerning the e-cars (not the hybrids), one would instinctively think that a first purchase would be more toward an affordable small e-car.  
+Furthermore the small city cars were our best sellers (60% of our total sales in the past 6 months).  
+
+![Price distribution in small petrol and hybrid cars](two_price_distrib_small_cars.png "Price distribution in small city cars")  
+
+fuelType  |  count  |  mean   |  std    |    min   |   25%   | 50%  | 75%  |  max
+-------   |  -----  |  ----   |  -----  |  ------- |  -----  | ---- | ---- | ----
+Hybrid    |  557.0  | 12148.4991 | 1827.110 | 7495.0 | 10890.0 | 12070.0 | 13450.0 | 18868  
+Petrol    |3443.0 |  8816.1333 | 2358.942 | 950.0 | 7197.5 | 8695.0 | 10290.0 | 25995.0   
+
+Although clearly city petrol cars are cheaper than the hybrids of the same kind, we can see an overlap of price range (upper price range for the petrol cars). Hence, the people who bought the petrol cars at the same price as the hybrids must have got a reason for that.  
+Therefore I'm going to look at the pattern of these "expensive" small petrol cars. If any pattern I find are not different from the one observed with the small hybrids, we can use this argument to convince our futur customers to switch to an electric car.
 
