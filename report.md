@@ -63,12 +63,12 @@ Verso-S     |        0 |      0 |     0 |      3
 Yaris       |       22 |    557 |    10 |   1533
 
 To simplify the analysis I have distributed all our models to 6 categories:  
-city_small              
-compact Sedan/family        
-compact SUV              
-mid-size/large family car  
-large SUV/profesional  
-sport                
+- city_small              
+- compact Sedan/family        
+- compact SUV              
+- mid-size/large family car  
+- large SUV/profesional  
+- sport                
 
 model_genre                |  Count  
 -----------                |  -----
@@ -107,7 +107,7 @@ Petrol     |  437.0       | 47.454920  | 8.229537   |  6.0   | 41.5 | 47.1 | 52.
 After applying a Mann-Whitney U test on the two fuel types, I can conlcude that the mpg of the compact SUV and sedan hybrid cars bought is significantly higher than the petrol cars of the same kinds.  
 
 ## **Why would our customers largely prefer to buy a small city petrol car?**
-This question is perhaps the most relevant. Indeed, concerning the e-cars (not the hybrids), one would instinctively think that a first purchase would be more toward an affordable small e-car.  
+This question is perhaps the most relevant. Indeed, concerning the e-cars (not the hybrids), one would instinctively think that a first purchase would balance more toward an affordable small e-car.  
 Furthermore the small city cars were our best sellers (60% of our total sales in the past 6 months).  
 
 ![Price distribution in small petrol and hybrid cars](two_price_distrib_small_cars.png "Price distribution in small city cars")  
@@ -117,6 +117,40 @@ fuelType  |  count  |  mean   |  std    |    min   |   25%   | 50%  | 75%  |  ma
 Hybrid    |  557.0  | 12148.4991 | 1827.110 | 7495.0 | 10890.0 | 12070.0 | 13450.0 | 18868  
 Petrol    |3443.0 |  8816.1333 | 2358.942 | 950.0 | 7197.5 | 8695.0 | 10290.0 | 25995.0   
 
-Although clearly city petrol cars are cheaper than the hybrids of the same kind, we can see an overlap of price range (upper price range for the petrol cars). Hence, the people who bought the petrol cars at the same price as the hybrids must have got a reason for that.  
-Therefore I'm going to look at the pattern of these "expensive" small petrol cars. If any pattern I find are not different from the one observed with the small hybrids, we can use this argument to convince our futur customers to switch to an electric car.
+Although clearly the city petrol cars are cheaper than the hybrids of the same kind, we can see that the price range of the hybrids overlaps with the upper price range of the petrol cars. Hence, the people who bought the petrol cars at the same price as the hybrids must have got a reason for that.  
+Therefore I'm going to look at the pattern of these "expensive" small petrol cars. If any pattern I find are not different from the one observed with the small hybrids, we can use this argument to convince our futur customers to switch to an electric car.  
+
+  I selected the IQR of the hybrids to restrict the small petrol cars to the right tail of their price distribution.  
+  Furthermore, I removed the right tail of the price distribution from the small hybrid cars.  
+  Here is the general summary statistics of the different numeric variables.  
+
+-   **Small hybrids**  
+
+Stat method |year | price  |  mileage  | tax   | mpg | engineSize
+--------    |---- | ------ |  -------  | ----- | --- | ----------
+count | 419 |419  | 419    |  419      |419  | 419  
+mean  | 2015.88 |11393.01 | 27925.86 |  25.07| 80.53 | 1.49   
+std   | 1.38| 1343.01 | 14886 |52.91 | 4.43 | 0.10   
+min   | 2012| 7495 | 2563 | 0.00 | 67.30 | 0.00   
+25%   | 2015| 10492| 17028.50 | 0.00 |76.30 | 1.50   
+50%   | 2016| 11595| 25054.00 | 0.00 |78.00 | 1.50
+75%   | 2017| 12500| 35951.50 | 0.00 |86.00 | 1.50
+max   | 2019| 13450| 83288.00 |140.00|86.00 | 1.50  
+
+- **Small expensive petrol cars**  
+
+Stat method |year | price  |  mileage  | tax   | mpg | engineSize
+--------    |---- | ------ |  -------  | ----- | --- | ----------
+count  | 546 | 546| 546 | 546 | 546  | 546
+mean   | 2018.45 | 11803.82 | 8822.09| 138.78 | 52.44 | 1.43
+std    | 0.81 | 651.04 | 6367.91 | 27.74 | 5.48 | 0.16
+min    |2016 | 10890 | 3.00 | 0.00 |47.10 | 1.00
+25%    |2018 | 11202.50 | 4223.50 | 145.00 | 47.90 | 1.50 
+50%    |2019 | 11810.50 | 7808.00 | 145.00 | 47.90 | 1.50 
+75%    |2019 | 12250.00 | 11842.50| 145.00 | 57.70 | 1.50 
+max    |2020 | 13400.00 | 39066.00| 150.00 | 86.00 | 1.50  
+
+By looking at the summary statistic, we can see several differences. For example, the petrol clients were enclined to buy younger cars than the hybrid clients. The age correlates with the lower mileage. However, while the engine size does not seem to be different between hybrids and petrol cars (median = 1.5L), the median tax was much higher for the petrol cars than for the hybrids. This could be an advantage for the hybrids. The customers are willing to pay a tax for a relatively expensive small-city car as long as the car is almost brand new, while the customers who bought an hybrid didn't mind to buy an older car for their tax efficiency.  
+Now I needd to confirm this statement using statistical tests.
+
 
