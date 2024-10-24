@@ -151,6 +151,30 @@ min    |2016 | 10890 | 3.00 | 0.00 |47.10 | 1.00
 max    |2020 | 13400.00 | 39066.00| 150.00 | 86.00 | 1.50  
 
 By looking at the summary statistic, we can see several differences. For example, the petrol clients were enclined to buy younger cars than the hybrid clients. The age correlates with the lower mileage. However, while the engine size does not seem to be different between hybrids and petrol cars (median = 1.5L), the median tax was much higher for the petrol cars than for the hybrids. This could be an advantage for the hybrids. The customers are willing to pay a tax for a relatively expensive small-city car as long as the car is almost brand new, while the customers who bought an hybrid didn't mind to buy an older car for their tax efficiency.  
-Now I needd to confirm this statement using statistical tests.
+
+## **Can we predict the fuelType decision of a customer?**  
+
+One way to test the validity of my above statement is to build a model around these parameters. The price takes much less weight as I selected only the petrol cars that are in the same range as the hybrids. The idea is to see whether there arguments in favour of buying an "expensive" small petrol car.
+For this, I am using a supervised machine learning model called classification. This is a model using a binary response variable, here petrol cars or not petrol cars.  
+I am using the most popular model for classification problems: the K Nearest Neighbors (KNN).  
+To determine k (the number of neighbors) that would mximise the score of my model, I plotted the score vs k for both the sample I used to train the model and the sample I used to test the model.  
+![KNN score vs k](KNN_model_score_vs_k.png)  
+Based on this graph, the best number of neighbors to use would be k = 7.  
+Based on the confusion matrix, the model is 90.7% accurate which is very good knowing that the model train on a sample size of 772.  
+Furthermore, the report shows that the model is good for both predicting a petrol purchase and a hybrid purchase based on these characteristics provided:  
+- Year of the model;  
+- mileage;  
+- mpg;  
+- Tax;  
+- Engine size;  
+- Price.  
+
+ fuelType  |  precision  |  recall | f1-score  | support
+ -------   |  ---------  |  ------ | -------   | -------
+ Petrol    |  0.90       |  0.94   |   0.92    |   109
+ Hybrid    |  0.92       |  0.86   |   0.89    |    84  
+
+ However, knowing that we want to focus on e-cars, the mpg parameter is not apropriate. Indeed, by definition the hybrids use both petrol and electiricity. Hence, they can achieve much longer distance with the same volume of gas as the petrol cars. We need another parameter to compare the distance an e-car achieve with a charge. 
+
 
 
