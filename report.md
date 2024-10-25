@@ -189,6 +189,14 @@ Because we have this time more hybrids Sedans than all the other fuelType cars t
 Although the Hybrids are still more expensive (p=7.15e-47), we can observe a larger overlapping of the price range between Hybrids and non Hybrids from lower range to higher range.  
 
 ### **Mileage**
+![Boxenplot mileage](boxenplot_mileage_Sedans.png)  
+There is no significant difference between the mileage distribution of the hybrid Sedans and the non-hybrid Sedans (p=0.6). Hence, mileage is not the reason why customers preferred to buy a Hbrid Sedan.  
 
+### **Tax**
+This would be the most obvious argument for choosing a Sedan Hybrid.  
+One would think...  
+However, let's stay naive and keep our eyes opened.  
+![Fig.8 Violinplot tax Sedan cars](Violinplot_tax_Sedans.png)  
+Interestingly, in both hybrids and non-hybrids we can see 2 populations of taxes. Why is that?
 
 
