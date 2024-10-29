@@ -196,7 +196,17 @@ There is no significant difference between the mileage distribution of the hybri
 This would be the most obvious argument for choosing a Sedan Hybrid.  
 One would think...  
 However, let's stay naive and keep our eyes opened.  
-![Fig.8 Violinplot tax Sedan cars](Violinplot_tax_Sedans.png)  
-Interestingly, in both hybrids and non-hybrids we can see 2 populations of taxes. Why is that?
+![Fig.8 Violinplot tax Sedan cars](Violinplot_tax_Sedans.png "Fig.8")  
+Interestingly, in both hybrids and non-hybrids we can see 2 populations of taxes. Why is that?  
+After subsetting the taxes into 3 groups:  
+- 0-£50;  
+- £50-£100;  
+- £100+;  
+I have looked again at the tax distribution.  
+![Fig9: Tax distribution per tax group](boxplot_taxes_Sedan_by_group_tax.png "Fig. 9")  
+We can see here more clearly that despite what the violin plot would have suggested for the higher taxes (Fig.8), the non_Hybrid compact Sedan show a higher tax (Mann-Whitney U test, p = 5.22e-44).  
+Therefore, the tax could be a good indicator for switching the decision into buying a Hybrid compact Sedan and also potentially an e-car.  
+However, I'm still bothered by the evident impact of the mpg which is an argument that cannot be used for the e-cars.  
+I will have therefore to develop two predictive models with and without the mpg feature.  
 
 
