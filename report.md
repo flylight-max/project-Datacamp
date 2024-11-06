@@ -209,4 +209,50 @@ Therefore, the tax could be a good indicator for switching the decision into buy
 However, I'm still bothered by the evident impact of the mpg which is an argument that cannot be used for the e-cars.  
 I will have therefore to develop two predictive models with and without the mpg feature.  
 
+# **Wrapping it up with modelisation**  
+One way to decide on the best marketing strategy to sell e-cars, like which feature we shouldfocus on, is to make a predictive modelisation. So after transforming my target variable into a boolean (fuelType = Hybrid or non_Hybrid), I tested among three classification model which one woul dbe the best. I also removed the mpg column, because mpg is much higher in the Hybrids compared to all the other cars but that is not the case for the e-cars. This high mpg is specific to the Hybrids.  
+![Fig. 10 Model comparison](Accuracy_comparison.png "fig.10")  
+We can nicely see on this figure that KNN (K-Nearest Neighbors) has the best accuracy. Note that I used k=7 based on my previous use of this model with the data (Even though I know I only used a subset of the data then.)  
+Like I was doing in my previous life, I normalised the features to their maximum using MaxAbScaler where all the feature values are being 0 and 1. This way, I do not modify their distribution (as shown before many of them do not have a normal distribution).  
+KNN compares the centroid of one sample x to its neighbors (k neighbors). If its closest neighbors are let's say Hybrids, then KNN will say that x might be a Hybrid.  
+Hence, to get such a good accuracy (0.994) there must be a drastic difference of the centroid between Hybrids and non-Hybrids. In other words, Hybrids and non-Hybrids are very well distinct.  
+![Fig.11: Features average](Features_mean_fuelType.png "Fig.11")  
+As you can see on fig.11 we do have a significant difference between the two categories of fuel type. furhtermore, the centroid in the non-hybrids is very homogene.  
+Nonetheless, KNN cannot tell us which feature(s) lead to such a big difference.  
+## **Can we find the features responsible for this difference?**
+I am not going into the details here (the graphs and code can be checked in my analysis file), but to summarise while the age of the car was about the same between Hybrids and non-Hybrids, the price (obviously!) and the engine size were much higher in the hybrids. The mileage was also higher in the hybrids.  Only the tax was lower.
+
+fuelType  | price |  mileage  |  tax |   engineSize
+--------  | ----- |  -------  |  ----|  ----------                                         
+Non-Hybrids |0.17345 | 0.134672 | 0.205250  |  0.294774
+Hybrids | 0.28354 | 0.157390 | 0.102175  |  0.407649  
+
+So where do the difference of the centroid level comes from so the non-hybrids have a much higher centroid than the hybrids?  
+The answer lies in the dummies!  
+I had to create dummies for the categorical features (one column per category). However Python removes one of these categories. In other words, if you have 0 in all the dummies columns of your feature, then your sample must belong to the one that is not present. But this means that this sample is missing a 1. Knowing that all my features oscillate between 0 and 1, 1 has a lot of weight in the centroid.  
+In the feature transmission Automatic is missing, while in the feature model_genre Compact Sedan family is missing. Remember this?  
+
+
+Kind of cars               | Freq among the Hybrids  |  Freq among the Petrols
+------------               | ----------------------  |  -------------
+<font color="red"> compact Sedan/family </font>       |  0.437102               |  0.062653
+compact SUV                |  0.284875               |  0.044298
+city_small                 |  0.272638               |  <font color="pink"> 0.842633 </font>
+mid-size/large family car  |  0.005384               |  0.029858
+sport                      |  0.000000               |  0.020558
+large SUV/profesional      |  0.000000               |  0.000000   
+
+84% of the petrol cars are small city cars. And the petrol cars represent 87% of the non-hybrid cars. And only 6% of them are compact Sedan/family.  
+
+# **Conclusion and suggestions**  
+Our marketing team would like to develop a campaign to sell e-cars (which we haven't sold any until now). The price is a bit of a problem. e-cars, like hybrids are more expensive. So what else can they focus on?  
+The data I had in hand does not contain any e-cars but has a good number of hybrids. The hybrids, like the e-cars got the advantage of having a reduced road tax (or even no tax at all depending on some paramaters). However, contrary to the e-cars, the hybrids have a higher mpg. They can achieve great distance with low consumption, but that's because they use 2 systems (combustion and electric). So I decided to remove this feature from my list.
+Interestingly, our clients who bought hybrids chose a bigger engine size so perhaps this is something we should focus on for our next e-car market. The mileage was also slightly higher than for the non-hybrids, which is potentially interesting for us. Our clients who chose an hybrid didn't mind to pay more even if the mileage was higher (more used).
+Finally the most weighted feature was the type of car. The "non-hybrid" clients largely prefer to buy a small used city car which was not necessarily the case for the "hybrid" clients who preferred to choos a compact sedan family car.  
+However, in term of mpg and recharge access, the e-cars will not fit in this category. It would be easier for people to use a small city e-car to go to work and therefore to use on a daily basis so they can re-charge their car either at work if available or at home if they have installed a system.  
+
+Hence, based on the last 6 month behavior of our clients and on what we know about the e-cars, I would recommend to do a campaign focusing on the type of car small-city, the tax and the mileage (somehow our customers don't mind but personally technically speaking I would not give so much confidence in this. This needs to be verify with the average life span of the batteries of the e-cars. We don't want to lie to our customers). 
+
+
+
 
